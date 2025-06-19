@@ -1,5 +1,6 @@
 <?php
-require_once '../includes/config.php';
+$db = require_once '../includes/config.php';
+
 
 // Search functionality
 $search = $_GET['search'] ?? '';
