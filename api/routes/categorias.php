@@ -1,5 +1,13 @@
 <?php
+<?php
 $db = require_once __DIR__ . '/../../includes/config.php';
+
+if (!$db) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Erro de conexão com o banco de dados.']);
+    exit;
+}
+
 
 // Captura os dados da requisição
 $request = [
