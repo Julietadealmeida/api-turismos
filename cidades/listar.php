@@ -1,5 +1,6 @@
 <?php
-require_once '../includes/config.php';
+$db = require_once '../includes/config.php';
+
 
 // Verifica se há um termo de pesquisa
 $termo = $_GET['search'] ?? '';
