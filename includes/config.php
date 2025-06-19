@@ -5,10 +5,11 @@ $username = "root";
 $password = "";
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Linha modificada para maior compatibilidade:
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("SET NAMES utf8");
+    $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->exec("SET NAMES utf8");
+
+    return $db; // retorna a conexão para uso externo
 } catch(PDOException $e) {
     die("Erro de conexão: " . $e->getMessage());
 }

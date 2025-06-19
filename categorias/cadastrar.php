@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "INSERT INTO t_categorias (nome) VALUES (?)";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     if ($stmt->execute(array_values($dados))) {
         header("Location: listar.php?success=1");
         exit;

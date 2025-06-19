@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (nome, descricao, cidade_id, categoria_id, endereco, horario, latitude, longitude) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     if ($stmt->execute(array_values($dados))) {
         header("Location: listar.php?success=1");
         exit;
@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Busca cidades e categorias para os selects
-$cidades = $conn->query("SELECT * FROM t_cidades")->fetchAll();
-$categorias = $conn->query("SELECT * FROM t_categorias")->fetchAll();
+$cidades = $db->query("SELECT * FROM t_cidades")->fetchAll();
+$categorias = $db->query("SELECT * FROM t_categorias")->fetchAll();
 ?>
 
 <!DOCTYPE html>

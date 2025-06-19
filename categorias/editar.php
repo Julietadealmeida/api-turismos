@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // Busca a categoria
-$stmt = $conn->prepare("SELECT * FROM t_categorias WHERE id = ?");
+$stmt = $db->prepare("SELECT * FROM t_categorias WHERE id = ?");
 $stmt->execute([$id]);
 $categoria = $stmt->fetch();
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE t_categorias SET nome = ? WHERE id = ?";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     if ($stmt->execute(array_values($dados))) {
         header("Location: listar.php?success=2");
         exit;

@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // Busca o ponto turístico com informações de cidade e categoria
-$stmt = $conn->prepare("
+$stmt = $db->prepare("
     SELECT p.*, c.nome as cidade, c.estado, c.pais, cat.nome as categoria 
     FROM t_pontos_turisticos p
     LEFT JOIN t_cidades c ON p.cidade_id = c.id

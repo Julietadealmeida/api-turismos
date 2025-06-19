@@ -21,5 +21,7 @@ if ($stmt->fetch()) {
 } else {
     header("Location: listar.php");
 }
+
 exit;
+
 ?>

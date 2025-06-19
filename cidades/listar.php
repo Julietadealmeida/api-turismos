@@ -11,12 +11,12 @@ $sql = "SELECT * FROM t_cidades";
 if (!empty($termo)) {
     $termo_like = '%' . $termo . '%';
     $sql .= " WHERE nome LIKE :termo OR estado LIKE :termo OR pais LIKE :termo";
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->bindParam(':termo', $termo_like);
     $stmt->execute();
     $cidades = $stmt->fetchAll();
 } else {
-    $cidades = $conn->query($sql)->fetchAll();
+    $cidades = $db->query($sql)->fetchAll();
 }
 
 $mensagem = '';

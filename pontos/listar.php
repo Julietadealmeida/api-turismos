@@ -16,12 +16,12 @@ $sql = "
 if (!empty($termo)) {
     $termo = '%' . $termo . '%';
     $sql .= " WHERE p.nome LIKE :termo OR c.nome LIKE :termo OR cat.nome LIKE :termo";
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     $stmt->bindParam(':termo', $termo);
     $stmt->execute();
     $pontos = $stmt->fetchAll();
 } else {
-    $pontos = $conn->query($sql)->fetchAll();
+    $pontos = $db->query($sql)->fetchAll();
 }
 
 $mensagem = '';

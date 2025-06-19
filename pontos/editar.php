@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // Busca o ponto turístico
-$stmt = $conn->prepare("SELECT * FROM t_pontos_turisticos WHERE id = ?");
+$stmt = $db->prepare("SELECT * FROM t_pontos_turisticos WHERE id = ?");
 $stmt->execute([$id]);
 $ponto = $stmt->fetch();
 
@@ -19,8 +19,8 @@ if (!$ponto) {
 }
 
 // Busca cidades e categorias para os selects
-$cidades = $conn->query("SELECT * FROM t_cidades")->fetchAll();
-$categorias = $conn->query("SELECT * FROM t_categorias")->fetchAll();
+$cidades = $db->query("SELECT * FROM t_cidades")->fetchAll();
+$categorias = $db->query("SELECT * FROM t_categorias")->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = [
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             endereco = ?, horario = ?, latitude = ?, longitude = ?
             WHERE id = ?";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     if ($stmt->execute(array_values($dados))) {
         header("Location: listar.php?success=2");
         exit;

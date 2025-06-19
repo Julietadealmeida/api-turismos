@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // Busca a cidade
-$stmt = $conn->prepare("SELECT * FROM t_cidades WHERE id = ?");
+$stmt = $db->prepare("SELECT * FROM t_cidades WHERE id = ?");
 $stmt->execute([$id]);
 $cidade = $stmt->fetch();
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE t_cidades SET nome = ?, estado = ?, pais = ? WHERE id = ?";
     
-    $stmt = $conn->prepare($sql);
+    $stmt = $db->prepare($sql);
     if ($stmt->execute(array_values($dados))) {
         header("Location: listar.php?success=2");
         exit;

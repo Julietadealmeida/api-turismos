@@ -11,7 +11,7 @@ if (!empty($search)) {
     $params[':search'] = '%' . $search . '%';
 }
 
-$stmt = $conn->prepare($query);
+$stmt = $db->prepare($query);
 foreach ($params as $key => $value) {
     $stmt->bindValue($key, $value);
 }
